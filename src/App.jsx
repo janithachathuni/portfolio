@@ -9,15 +9,17 @@ const App = () => {
           <h1>Janitha Chathuni</h1>
           <div>
             <p>Software Engineer</p>
-            <p>Data Scientist</p>
+            {/* <p>Data Scientist</p> */}
           </div>
-          Name + Job Titles + Picture + Menu
+          Name + Job Titles + Picture + Menu + CV download
         </div>
       </div>
-      <div>About Me</div>
+      <div>Skills</div>
       <div>Projects</div>
       <div>Experiences</div>
       <div>Education</div>
+      <div>Certifications</div>
+      <div>Contact + CV download</div>
       <div className="contact-section">Contact Me</div>
     </div>
   );
