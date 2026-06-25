@@ -1,12 +1,14 @@
 import React from "react";
 import "./App.css";
+import SkillsSection from "./SkillsSection";
+import ProjectsSection from "./ProjectsSection";
 
 const App = () => {
   return (
     <div>
       <div className="intro">
         <div className="intro-content">
-          <h1>Janitha Chathuni</h1>
+          <h1>JANITHA CHATHUNI</h1>
           <div>
             <p>Software Engineer</p>
             {/* <p>Data Scientist</p> */}
@@ -14,8 +16,10 @@ const App = () => {
           Name + Job Titles + Picture + Menu + CV download
         </div>
       </div>
-      <div>Skills</div>
-      <div>Projects</div>
+      <div>
+        <SkillsSection/>
+      </div>
+      <div><ProjectsSection/></div>
       <div>Experiences</div>
       <div>Education</div>
       <div>Certifications</div>
