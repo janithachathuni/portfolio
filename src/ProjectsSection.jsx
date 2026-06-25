@@ -57,7 +57,7 @@ const ProjectsSection = () => {
     <section className="projects-section">
       <div className="projects-header">
         <span className="projects-eyebrow">Selected Work</span>
-        <h2 className="projects-title">Projects</h2>
+        <h1 className="projects-title">Projects</h1>
       </div>
 
       <div className="projects-grid">
@@ -114,12 +114,13 @@ const ProjectsSection = () => {
       <style>{`
         .projects-section {
           padding: 80px 48px;
-          max-width: 1100px;
-          margin: 0 auto;
+          width: 100%;
+          background-color: #f4f3ee;
         }
 
         .projects-header {
-          margin-bottom: 48px;
+          max-width: 1100px;
+          margin: 0 auto 48px auto;
         }
 
         .projects-eyebrow {
@@ -127,7 +128,7 @@ const ProjectsSection = () => {
           font-size: 0.75rem;
           letter-spacing: 0.2em;
           text-transform: uppercase;
-          color: #888;
+          color: #0d244d;
           margin-bottom: 8px;
         }
 
@@ -135,13 +136,15 @@ const ProjectsSection = () => {
           font-size: 2.5rem;
           font-weight: 700;
           margin: 0;
-          color: #f1f1f1;
+          color: #214e34;
         }
 
         .projects-grid {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
           gap: 24px;
+          max-width: 1100px;
+          margin: 0 auto;
         }
 
         .project-card {
@@ -197,12 +200,12 @@ const ProjectsSection = () => {
           background: #1e1e1e;
           border: 1px solid #333;
           border-radius: 4px;
-          color: #aaa;
+          color: #0d244d;
         }
 
         .project-toggle {
           font-size: 1.4rem;
-          color: #555;
+          color: #0d244d;
           line-height: 1;
           transition: color 0.2s;
           flex-shrink: 0;
@@ -217,13 +220,13 @@ const ProjectsSection = () => {
         .project-name {
           font-size: 1.4rem;
           font-weight: 700;
-          color: #f1f1f1;
+          color: #214e34;
           margin: 0 0 6px;
         }
 
         .project-tagline {
           font-size: 0.88rem;
-          color: #666;
+          color: #0d244d;
           margin: 0;
         }
 
@@ -241,7 +244,7 @@ const ProjectsSection = () => {
 
         .project-description {
           font-size: 0.88rem;
-          color: #999;
+          color: #0d244d;
           line-height: 1.65;
           margin: 20px 0 14px;
         }
@@ -253,7 +256,7 @@ const ProjectsSection = () => {
 
         .project-bullets li {
           font-size: 0.84rem;
-          color: #888;
+          color: #0d244d;
           line-height: 1.6;
           margin-bottom: 6px;
         }

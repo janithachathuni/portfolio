@@ -2,29 +2,28 @@ import React from "react";
 import "./App.css";
 import SkillsSection from "./SkillsSection";
 import ProjectsSection from "./ProjectsSection";
+import HeroSection from "./HeroSection";
+import ExperienceSection from "./ExperienceSection";
+import EducationSection from "./EducationSection";
+import ContactSection from "./ContactSection";
 
 const App = () => {
   return (
     <div>
-      <div className="intro">
-        <div className="intro-content">
-          <h1>JANITHA CHATHUNI</h1>
-          <div>
-            <p>Software Engineer</p>
-            {/* <p>Data Scientist</p> */}
-          </div>
-          Name + Job Titles + Picture + Menu + CV download
-        </div>
+      <div style={{ position: 'sticky', top: 0, zIndex: 0 }}>
+        <HeroSection />
       </div>
-      <div>
-        <SkillsSection/>
+      <div style={{ position: 'sticky', top: 0, zIndex: 1 }}>
+<SkillsSection />
       </div>
-      <div><ProjectsSection/></div>
-      <div>Experiences</div>
-      <div>Education</div>
-      <div>Certifications</div>
-      <div>Contact + CV download</div>
-      <div className="contact-section">Contact Me</div>
+
+      <div style={{ position: 'relative', zIndex: 2 }}>
+        
+        <ProjectsSection />
+        <ExperienceSection />
+        <EducationSection />
+        <ContactSection />
+      </div>
     </div>
   );
 };
