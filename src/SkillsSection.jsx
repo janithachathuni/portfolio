@@ -15,9 +15,13 @@ const skillColors = {
 const SkillsSection = () => {
   return (
     <div style={{ padding: "3rem 2rem", backgroundColor: "#0d244d" }}>
-      <h1 style={{ fontSize: 40,  color: "#f4f3ee", marginBottom: "1.5rem" }}>
+      <h1 style={{ fontSize: 40,  color: "#f4f3ee", marginBottom: "1.5rem", fontWeight: "normal", }}>
         A little about me...
       </h1>
+
+      <p style={{color: "#f4f3ee"}}>
+        Janitha Chathuni is a software developer, who dabbles in UI design. A Computer Science undergrad at University of Colombo School of Computing, she is hopeful to apply her skills into real world domains. 
+      </p>
 
       {[
         { label: "Languages", key: "languages" },
