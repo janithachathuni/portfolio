@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Janitha Chathuni — Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pliant:ital,wght@0,100..900;1,100..900&family=Xanh+Mono:ital@0;1&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      font-family: "Xanh Mono", serif;
+    }
+
+    body {
+      background-color: #0d244d;
+      font-family: "Pliant", sans-serif;
+    }
+
+    /* General Colour Scheme: #0d244d, #f4f3ee, #214e34, #8a817c, #ff1654 */
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- Load React and ReactDOM from CDN -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  
+  <!-- Babel for JSX support -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    // ===== SKILLS DATA =====
+    const skills = {
+      languages: ["C", "HTML", "JavaScript", "SQL", "PHP"],
+      frameworks: ["React", "React Native", "Node.js", "Express.js", "CSS", "Tailwind CSS", "Spring Boot"],
+      tools: ["Git", "GitHub", "Figma", "Postman", "MySQL", "MongoDB", "PostgreSQL"],
+    };
+
+    const skillColors = {
+      languages: { bg: "#EEEDFE", border: "#AFA9EC", text: "#3C3489" },
+      frameworks: { bg: "#E1F5EE", border: "#9FE1CB", text: "#085041" },
+      tools: { bg: "#FAEEDA", border: "#FAC775", text: "#633806" },
+    };
+
+    // ===== PROJECTS DATA =====
+    const projects = [
+      {
+        id: 1,
+        title: "SurplusStays",
+        type: "Group Project",
+        tagline: "Food Waste Reduction Platform",
+        stack: ["HTML", "CSS", "JavaScript", "PHP"],
+        description: "A platform that connects consumers with stores selling discounted near-expiry food products, reducing waste while saving money.",
+        bullets: [
+          "Conducted feasibility study and documented requirements with SRS.",
+          "Built customer-facing UI for purchasing discounted near-expiry products.",
+          "Integrated workflows to allow users to order and buy food from stores, online.",
+        ],
+        github: "https://github.com/PamaliWeerasinghe/SurplusStays",
+        accent: "#4ade80",
+      },
+      {
+        id: 2,
+        title: "JourneyQ",
+        type: "Group Project",
+        tagline: "Travel Planning & Marketplace Platform",
+        stack: ["React", "JavaScript"],
+        description: "A travel marketplace where service providers can list offerings and travelers can plan and book complete trips.",
+        bullets: [
+          "Designed and built UI components for service providers, enhancing usability.",
+          "Collaborated with team to integrate marketplace features and trip planning modules.",
+        ],
+        github: "https://github.com/Journey-Q/journeyq_service_providers_frontend",
+        accent: "#60a5fa",
+      },
+      {
+        id: 3,
+        title: "Kurullo",
+        type: "Solo Project",
+        tagline: "Bird Tracking Platform",
+        stack: ["React", "Node.js", "Express.js", "MongoDB"],
+        description: "A community platform for birdwatchers featuring photo-blogging, checklist tracking, and discussion forums built on the MERN stack.",
+        bullets: [
+          "Developed a platform for birdwatchers with photo-blogging, checklist tracking, and forums.",
+          "Implemented REST APIs for data management.",
+          "Used MERN stack application with MVC architecture.",
+        ],
+        github: "https://github.com/janithachathuni/birding",
+        accent: "#f59e0b",
+      },
+    ];
+
+    // ===== EXPERIENCE DATA =====
+    const experiences = [
+      {
+        id: 1,
+        title: "Software Developer Intern",
+        company: "TechInnovate Solutions",
+        period: "June 2025 - Present",
+        description: "Working on full-stack web applications with a focus on React and Node.js.",
+        bullets: [
+          "Developing responsive web applications using React and TypeScript",
+          "Building REST APIs with Node.js and Express",
+          "Collaborating with senior developers on feature implementation",
+          "Participating in daily stand-ups and sprint planning"
+        ],
+        tech: ["React", "Node.js", "TypeScript", "Express", "MongoDB"],
+      },
+      {
+        id: 2,
+        title: "Junior Web Developer",
+        company: "Creative Digital Agency",
+        period: "Jan 2025 - May 2025",
+        description: "Designed and developed websites for various clients.",
+        bullets: [
+          "Built custom WordPress themes and plugins",
+          "Created responsive landing pages with HTML, CSS, and JavaScript",
+          "Optimized website performance and SEO",
+          "Worked closely with designers to implement UI/UX designs"
+        ],
+        tech: ["HTML", "CSS", "JavaScript", "WordPress", "PHP"],
+      },
+    ];
+
+    // ===== EDUCATION DATA =====
+    const educationData = [
+      {
+        id: 1,
+        degree: "Bachelor of Science in Computer Science",
+        institution: "University of Colombo School of Computing",
+        period: "2022 - 2026",
+        gpa: "3.8/4.0",
+        description: "Comprehensive computer science education with focus on software engineering, algorithms, and data structures.",
+        courses: [
+          "Data Structures and Algorithms",
+          "Database Management Systems",
+          "Software Engineering",
+          "Computer Networks",
+          "Operating Systems",
+          "Web Development",
+        ],
+      },
+      {
+        id: 2,
+        degree: "Diploma in Graphic Design",
+        institution: "Creative Arts Institute",
+        period: "2021 - 2022",
+        description: "Professional training in graphic design principles, typography, and digital media.",
+        courses: [
+          "Typography",
+          "Digital Illustration",
+          "Branding and Identity",
+          "Layout Design",
+          "Color Theory",
+        ],
+      },
+      {
+        id: 3,
+        degree: "Higher Secondary Education",
+        institution: "Colombo International School",
+        period: "2018 - 2021",
+        gpa: "A* in Mathematics, Physics, and Computing",
+        description: "Specialized in mathematics and computer science with excellent academic performance.",
+        courses: [
+          "Advanced Mathematics",
+          "Physics",
+          "Computer Science",
+          "English Literature",
+        ],
+      },
+      {
+        id: 4,
+        degree: "Certified Web Developer",
+        institution: "Online Learning Platform",
+        period: "2023",
+        description: "Intensive web development bootcamp covering modern web technologies.",
+        courses: [
+          "Full-Stack Web Development",
+          "React and Redux",
+          "Node.js and Express",
+          "MongoDB and SQL",
+          "DevOps and Deployment",
+        ],
+      },
+      {
+        id: 5,
+        degree: "UX/UI Design Certificate",
+        institution: "Design Academy",
+        period: "2024",
+        description: "Specialized training in user experience and interface design principles.",
+        courses: [
+          "User Research Methods",
+          "Information Architecture",
+          "Wireframing and Prototyping",
+          "Usability Testing",
+          "Design Systems",
+        ],
+      },
+    ];
+
+    // ===== COMPONENTS =====
+
+    // HeroSection
+    const HeroSection = () => {
+      return (
+        <section style={{
+          position: 'relative',
+          height: '100vh',
+          width: '100%',
+          overflow: 'hidden',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+          <div style={{
+            position: 'absolute',
+            inset: 0,
+            background: `
+              radial-gradient(ellipse 70% 60% at 75% 25%, #ff165488, transparent),
+              radial-gradient(ellipse 60% 70% at 80% 15%, #f4f3ee, transparent),
+              radial-gradient(ellipse 50% 50% at 65% 75%, #a8d5b5, transparent),
+              radial-gradient(ellipse 70% 40% at 10% 80%, #fffef8, transparent),
+              radial-gradient(ellipse 40% 50% at 90% 55%, #ffe4d5, transparent),
+              #adbad1
+            `,
+            filter: 'blur(48px)',
+            transform: 'scale(1.1)',
+          }} />
+          
+          <div style={{
+            position: 'relative',
+            zIndex: 1,
+            textAlign: 'center',
+            color: '#f4f3ee',
+            padding: '0 2rem',
+          }}>
+            <h1 style={{
+              fontSize: 'clamp(2.5rem, 7vw, 6rem)',
+              fontWeight: 'normal',
+              margin: 0,
+              letterSpacing: '-0.02em',
+              lineHeight: 1.05,
+              color: '#0d244d',
+            }}>
+              Hello World
+            </h1>
+            <p style={{
+              paddingBlock: '0.4rem',
+              fontSize: 'clamp(0.95rem, 2vw, 1.25rem)',
+              fontFamily: '"Pliant", sans-serif',
+              backgroundColor: '#0d244d',
+              color: '#f4f3ee',
+              letterSpacing: '0.04em',
+              fontWeight: 400,
+            }}>
+              Software Engineer · Full-Stack Developer · UI Enthusiast
+            </p>
+          </div>
+        </section>
+      );
+    };
+
+    // SkillsSection
+    const SkillsSection = () => {
+      const rightRef = React.useRef(null);
+
+      const handleWheel = (e) => {
+        if (!rightRef.current) return;
+        const el = rightRef.current;
+        const scrollTop = el.scrollTop;
+        const maxScroll = el.scrollHeight - el.clientHeight;
+        const atTop = scrollTop === 0 && e.deltaY < 0;
+        const atBottom = scrollTop >= maxScroll && e.deltaY > 0;
+        if (atTop || atBottom) return;
+        e.preventDefault();
+        el.scrollTop += e.deltaY;
+      };
+
+      return (
+        <div
+          id="skills"
+          onWheel={handleWheel}
+          style={{
+            display: 'flex',
+            height: '100vh',
+            backgroundColor: '#0d244d',
+            overflow: 'hidden',
+          }}
+        >
+          <div style={{
+            width: '40%',
+            padding: '3rem 2rem 3rem 3rem',
+            display: 'flex',
+            alignItems: 'flex-start',
+            justifyContent: 'flex-start',
+            flexShrink: 0,
+          }}>
+            <h1 style={{
+              fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+              color: '#f4f3ee',
+              fontWeight: 'normal',
+              lineHeight: 1.1,
+              position: 'sticky',
+              top: '3rem',
+            }}>
+              A little<br />about me...
+            </h1>
+          </div>
+
+          <div
+            ref={rightRef}
+            id="skills-right"
+            style={{
+              width: '60%',
+              overflowY: 'scroll',
+              padding: '3rem 3rem 3rem 2rem',
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+            }}
+          >
+            <style>{`#skills-right::-webkit-scrollbar { display: none; }`}</style>
+
+            <p style={{ color: '#f4f3ee', lineHeight: 1.8, marginBottom: '2.5rem', fontSize: '0.95rem' }}>
+              Janitha Chathuni is a software developer, who dabbles in UI design. A Computer Science undergrad at University of Colombo School of Computing, she is hopeful to apply her skills into real world domains.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, eaque iure explicabo cupiditate distinctio quasi ipsa. Repudiandae odit dolores excepturi, minima quia quaerat facere. Quia, modi. Ut id eos at!
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, eaque iure explicabo cupiditate distinctio quasi ipsa. Repudiandae odit dolores excepturi, minima quia quaerat facere. Quia, modi. Ut id eos at!
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, eaque iure explicabo cupiditate distinctio quasi ipsa. Repudiandae odit dolores excepturi, minima quia quaerat facere. Quia, modi. Ut id eos at!
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, eaque iure explicabo cupiditate distinctio quasi ipsa. Repudiandae odit dolores excepturi, minima quia quaerat facere. Quia, modi. Ut id eos at!
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, eaque iure explicabo cupiditate distinctio quasi ipsa. Repudiandae odit dolores excepturi, minima quia quaerat facere. Quia, modi. Ut id eos at!
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, eaque iure explicabo cupiditate distinctio quasi ipsa. Repudiandae odit dolores excepturi, minima quia quaerat facere. Quia, modi. Ut id eos at!
+            </p>
+
+            {[
+              { label: "Languages", key: "languages" },
+              { label: "Frameworks & Libraries", key: "frameworks" },
+              { label: "Tools & Databases", key: "tools" },
+            ].map(({ label, key }) => (
+              <div key={key} style={{ marginBottom: '2rem' }}>
+                <p style={{
+                  fontSize: 11,
+                  fontWeight: 500,
+                  color: '#8a817c',
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                  marginBottom: 10,
+                }}>
+                  {label}
+                </p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                  {skills[key].map((skill) => (
+                    <span
+                      key={skill}
+                      style={{
+                        padding: '6px 14px',
+                        borderRadius: 999,
+                        border: `0.5px solid ${skillColors[key].border}`,
+                        background: skillColors[key].bg,
+                        color: skillColors[key].text,
+                        fontSize: 13,
+                      }}
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+            <div style={{ height: '4rem' }} />
+          </div>
+        </div>
+      );
+    };
+
+    // ProjectsSection
+    const ProjectsSection = () => {
+      const [active, setActive] = React.useState(null);
+      const rightRef = React.useRef(null);
+
+      const handleWheel = (e) => {
+        if (!rightRef.current) return;
+        const el = rightRef.current;
+        const atTop = el.scrollTop === 0 && e.deltaY < 0;
+        const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight && e.deltaY > 0;
+        if (atTop || atBottom) return;
+        e.stopPropagation();
+        el.scrollTop += e.deltaY;
+      };
+
+      return (
+        <section
+          id="projects"
+          onWheel={handleWheel}
+          style={{
+            display: 'flex',
+            height: '100vh',
+            backgroundColor: '#f4f3ee',
+            overflow: 'hidden',
+          }}
+        >
+          <div style={{
+            width: '40%',
+            padding: '3rem 2rem 3rem 3rem',
+            display: 'flex',
+            alignItems: 'flex-start',
+            justifyContent: 'flex-start',
+            flexShrink: 0,
+          }}>
+            <div style={{
+              position: 'sticky',
+              top: '3rem',
+            }}>
+              <span style={{
+                display: 'block',
+                fontSize: '0.75rem',
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase',
+                color: '#0d244d',
+                marginBottom: '8px',
+              }}>
+                Selected Work
+              </span>
+              <h1 style={{
+                fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+                color: '#0d244d',
+                fontWeight: '700',
+                lineHeight: 1.1,
+                margin: 0,
+              }}>
+                Projects
+              </h1>
+            </div>
+          </div>
+
+          <div
+            ref={rightRef}
+            id="projects-right"
+            style={{
+              width: '60%',
+              overflowY: 'scroll',
+              padding: '3rem 3rem 3rem 2rem',
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+            }}
+          >
+            <style>{`#projects-right::-webkit-scrollbar { display: none; }`}</style>
+
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr',
+              gap: '24px',
+              maxWidth: '100%',
+            }}>
+              {projects.map((project) => {
+                const isOpen = active === project.id;
+                return (
+                  <div
+                    key={project.id}
+                    style={{
+                      position: 'relative',
+                      background: '#111',
+                      border: `1px solid ${isOpen ? project.accent : '#222'}`,
+                      borderRadius: '12px',
+                      padding: '28px',
+                      cursor: 'pointer',
+                      overflow: 'hidden',
+                      transition: 'border-color 0.25s, transform 0.2s',
+                    }}
+                    onClick={() => setActive(isOpen ? null : project.id)}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = project.accent;
+                      e.currentTarget.style.transform = 'translateY(-2px)';
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!isOpen) {
+                        e.currentTarget.style.borderColor = '#222';
+                      }
+                      e.currentTarget.style.transform = 'translateY(0)';
+                    }}
+                  >
+                    <div style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'flex-start',
+                      marginBottom: '16px',
+                    }}>
+                      <div style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '8px',
+                      }}>
+                        <span style={{
+                          fontSize: '0.7rem',
+                          letterSpacing: '0.15em',
+                          textTransform: 'uppercase',
+                          color: project.accent,
+                          fontWeight: 600,
+                        }}>
+                          {project.type}
+                        </span>
+                        <div style={{
+                          display: 'flex',
+                          flexWrap: 'wrap',
+                          gap: '6px',
+                        }}>
+                          {project.stack.map((tech) => (
+                            <span
+                              key={tech}
+                              style={{
+                                fontSize: '0.7rem',
+                                padding: '3px 8px',
+                                background: '#1e1e1e',
+                                border: '1px solid #333',
+                                borderRadius: '4px',
+                                color: '#ccc',
+                              }}
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      <span style={{
+                        fontSize: '1.4rem',
+                        color: isOpen ? project.accent : '#666',
+                        lineHeight: 1,
+                        transition: 'color 0.2s',
+                        flexShrink: 0,
+                        marginLeft: '12px',
+                      }}>
+                        {isOpen ? "−" : "+"}
+                      </span>
+                    </div>
+
+                    <h3 style={{
+                      fontSize: '1.4rem',
+                      fontWeight: 700,
+                      color: '#fff',
+                      margin: '0 0 6px',
+                    }}>
+                      {project.title}
+                    </h3>
+                    <p style={{
+                      fontSize: '0.88rem',
+                      color: '#aaa',
+                      margin: 0,
+                    }}>
+                      {project.tagline}
+                    </p>
+
+                    <div style={{
+                      maxHeight: isOpen ? '500px' : '0',
+                      overflow: 'hidden',
+                      transition: 'max-height 0.4s ease, opacity 0.3s ease',
+                      opacity: isOpen ? 1 : 0,
+                    }}>
+                      <p style={{
+                        fontSize: '0.88rem',
+                        color: '#ccc',
+                        lineHeight: 1.65,
+                        margin: '20px 0 14px',
+                      }}>
+                        {project.description}
+                      </p>
+                      <ul style={{
+                        paddingLeft: '18px',
+                        margin: '0 0 20px',
+                        listStyle: 'disc',
+                      }}>
+                        {project.bullets.map((b, i) => (
+                          <li key={i} style={{
+                            fontSize: '0.84rem',
+                            color: '#ccc',
+                            lineHeight: 1.6,
+                            marginBottom: '6px',
+                          }}>
+                            {b}
+                          </li>
+                        ))}
+                      </ul>
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          display: 'inline-block',
+                          fontSize: '0.82rem',
+                          fontWeight: 600,
+                          color: project.accent,
+                          textDecoration: 'none',
+                          letterSpacing: '0.04em',
+                          borderBottom: '1px solid transparent',
+                          transition: 'border-color 0.2s',
+                        }}
+                        onClick={(e) => e.stopPropagation()}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.borderColor = project.accent;
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.borderColor = 'transparent';
+                        }}
+                      >
+                        View on GitHub →
+                      </a>
+                    </div>
+
+                    <div style={{
+                      position: 'absolute',
+                      bottom: 0,
+                      left: 0,
+                      height: '3px',
+                      width: isOpen ? '100%' : '0',
+                      background: project.accent,
+                      transition: 'width 0.3s ease',
+                      borderRadius: '0 0 0 12px',
+                    }} />
+                  </div>
+                );
+              })}
+            </div>
+            <div style={{ height: '4rem' }} />
+          </div>
+        </section>
+      );
+    };
+
+    // ExperienceSection
+    const ExperienceSection = () => {
+      const rightRef = React.useRef(null);
+
+      const handleWheel = (e) => {
+        if (!rightRef.current) return;
+        const el = rightRef.current;
+        const atTop = el.scrollTop === 0 && e.deltaY < 0;
+        const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight && e.deltaY > 0;
+        if (atTop || atBottom) return;
+        e.stopPropagation();
+        el.scrollTop += e.deltaY;
+      };
+
+      return (
+        <div
+          id="experience"
+          onWheel={handleWheel}
+          style={{
+            display: 'flex',
+            height: '100vh',
+            backgroundColor: '#0d244d',
+            overflow: 'hidden',
+          }}
+        >
+          <div style={{
+            width: '40%',
+            padding: '3rem 2rem 3rem 3rem',
+            display: 'flex',
+            alignItems: 'flex-start',
+            justifyContent: 'flex-start',
+            flexShrink: 0,
+          }}>
+            <h1 style={{
+              fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+              color: '#f4f3ee',
+              fontWeight: 'normal',
+              lineHeight: 1.1,
+              position: 'sticky',
+              top: '3rem',
+            }}>
+              Experience
+            </h1>
+          </div>
+
+          <div
+            ref={rightRef}
+            id="experience-right"
+            style={{
+              width: '60%',
+              overflowY: 'scroll',
+              padding: '3rem 3rem 3rem 2rem',
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+            }}
+          >
+            <style>{`#experience-right::-webkit-scrollbar { display: none; }`}</style>
+
+            <p style={{ 
+              color: '#f4f3ee', 
+              lineHeight: 1.8, 
+              marginBottom: '2.5rem', 
+              fontSize: '0.95rem',
+              opacity: 0.8,
+            }}>
+              Professional journey and work experience in software development, design, and research.
+            </p>
+
+            {experiences.map((exp) => (
+              <div key={exp.id} style={{ 
+                marginBottom: '3rem',
+                borderBottom: '1px solid rgba(255,255,255,0.05)',
+                paddingBottom: '2rem',
+              }}>
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'flex-start',
+                  marginBottom: '0.5rem',
+                }}>
+                  <div>
+                    <h3 style={{
+                      fontSize: '1.2rem',
+                      fontWeight: '600',
+                      color: '#f4f3ee',
+                      margin: 0,
+                      marginBottom: '4px',
+                    }}>
+                      {exp.title}
+                    </h3>
+                    <p style={{
+                      fontSize: '0.95rem',
+                      color: '#8a817c',
+                      margin: 0,
+                    }}>
+                      {exp.company}
+                    </p>
+                  </div>
+                  <span style={{
+                    fontSize: '0.8rem',
+                    color: '#8a817c',
+                    fontWeight: 500,
+                    whiteSpace: 'nowrap',
+                    marginLeft: '16px',
+                    paddingTop: '2px',
+                  }}>
+                    {exp.period}
+                  </span>
+                </div>
+
+                <p style={{
+                  fontSize: '0.9rem',
+                  color: '#f4f3ee',
+                  lineHeight: 1.6,
+                  marginTop: '1rem',
+                  marginBottom: '0.8rem',
+                  opacity: 0.8,
+                }}>
+                  {exp.description}
+                </p>
+
+                <ul style={{
+                  listStyle: 'none',
+                  padding: 0,
+                  margin: '0 0 1rem 0',
+                }}>
+                  {exp.bullets.map((bullet, idx) => (
+                    <li key={idx} style={{
+                      fontSize: '0.85rem',
+                      color: '#f4f3ee',
+                      lineHeight: 1.6,
+                      marginBottom: '4px',
+                      opacity: 0.7,
+                      paddingLeft: '18px',
+                      position: 'relative',
+                    }}>
+                      <span style={{
+                        position: 'absolute',
+                        left: 0,
+                        top: '8px',
+                        width: '6px',
+                        height: '6px',
+                        borderRadius: '50%',
+                        backgroundColor: '#4ade80',
+                        opacity: 0.5,
+                      }} />
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+
+                <div style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '6px',
+                  marginTop: '0.5rem',
+                }}>
+                  {exp.tech.map((tech) => (
+                    <span
+                      key={tech}
+                      style={{
+                        fontSize: '0.7rem',
+                        padding: '3px 10px',
+                        borderRadius: '4px',
+                        background: 'rgba(255,255,255,0.05)',
+                        border: '1px solid rgba(255,255,255,0.08)',
+                        color: '#8a817c',
+                      }}
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+            <div style={{ height: '4rem' }} />
+          </div>
+        </div>
+      );
+    };
+
+    // EducationSection
+    const EducationSection = () => {
+      const rightRef = React.useRef(null);
+
+      const handleWheel = (e) => {
+        if (!rightRef.current) return;
+        const el = rightRef.current;
+        const atTop = el.scrollTop === 0 && e.deltaY < 0;
+        const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight && e.deltaY > 0;
+        if (atTop || atBottom) return;
+        e.stopPropagation();
+        el.scrollTop += e.deltaY;
+      };
+
+      return (
+        <div
+          id="education"
+          onWheel={handleWheel}
+          style={{
+            display: 'flex',
+            height: '100vh',
+            backgroundColor: '#f4f3ee',
+            overflow: 'hidden',
+          }}
+        >
+          <div style={{
+            width: '40%',
+            padding: '3rem 2rem 3rem 3rem',
+            display: 'flex',
+            alignItems: 'flex-start',
+            justifyContent: 'flex-start',
+            flexShrink: 0,
+          }}>
+            <h1 style={{
+              fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+              color: '#0d244d',
+              fontWeight: 'normal',
+              lineHeight: 1.1,
+              position: 'sticky',
+              top: '3rem',
+            }}>
+              Education & Certifications
+            </h1>
+          </div>
+
+          <div
+            ref={rightRef}
+            id="education-right"
+            style={{
+              width: '60%',
+              overflowY: 'scroll',
+              padding: '3rem 3rem 3rem 2rem',
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+            }}
+          >
+            <style>{`#education-right::-webkit-scrollbar { display: none; }`}</style>
+
+            <p style={{ 
+              color: '#0d244d', 
+              lineHeight: 1.8, 
+              marginBottom: '2.5rem', 
+              fontSize: '0.95rem',
+              opacity: 0.8,
+            }}>
+              Academic background and professional certifications in computer science, design, and technology.
+            </p>
+
+            {educationData.map((edu) => (
+              <div key={edu.id} style={{ 
+                marginBottom: '3rem',
+                borderBottom: '1px solid rgba(13, 36, 77, 0.08)',
+                paddingBottom: '2rem',
+              }}>
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'flex-start',
+                  marginBottom: '0.25rem',
+                }}>
+                  <div>
+                    <h3 style={{
+                      fontSize: '1.2rem',
+                      fontWeight: '600',
+                      color: '#0d244d',
+                      margin: 0,
+                      marginBottom: '4px',
+                    }}>
+                      {edu.degree}
+                    </h3>
+                    <p style={{
+                      fontSize: '0.95rem',
+                      color: '#5a524c',
+                      margin: 0,
+                    }}>
+                      {edu.institution}
+                    </p>
+                  </div>
+                  <div style={{
+                    textAlign: 'right',
+                    flexShrink: 0,
+                    marginLeft: '16px',
+                  }}>
+                    <span style={{
+                      fontSize: '0.8rem',
+                      color: '#5a524c',
+                      fontWeight: 500,
+                      whiteSpace: 'nowrap',
+                      display: 'block',
+                    }}>
+                      {edu.period}
+                    </span>
+                    {edu.gpa && (
+                      <span style={{
+                        fontSize: '0.7rem',
+                        color: '#4ade80',
+                        fontWeight: 600,
+                        display: 'block',
+                        marginTop: '2px',
+                        background: 'rgba(74, 222, 128, 0.1)',
+                        padding: '2px 8px',
+                        borderRadius: '4px',
+                      }}>
+                        {edu.gpa}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <p style={{
+                  fontSize: '0.9rem',
+                  color: '#0d244d',
+                  lineHeight: 1.6,
+                  marginTop: '0.75rem',
+                  marginBottom: '0.8rem',
+                  opacity: 0.8,
+                }}>
+                  {edu.description}
+                </p>
+
+                <div style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '6px',
+                  marginTop: '0.5rem',
+                }}>
+                  {edu.courses.map((course) => (
+                    <span
+                      key={course}
+                      style={{
+                        fontSize: '0.7rem',
+                        padding: '3px 10px',
+                        borderRadius: '4px',
+                        background: 'rgba(13, 36, 77, 0.05)',
+                        border: '1px solid rgba(13, 36, 77, 0.08)',
+                        color: '#0d244d',
+                      }}
+                    >
+                      {course}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+            <div style={{ height: '4rem' }} />
+          </div>
+        </div>
+      );
+    };
+
+    // ContactSection
+    const ContactSection = () => {
+      const rightRef = React.useRef(null);
+
+      const handleWheel = (e) => {
+        if (!rightRef.current) return;
+        const el = rightRef.current;
+        const atTop = el.scrollTop === 0 && e.deltaY < 0;
+        const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight && e.deltaY > 0;
+        if (atTop || atBottom) return;
+        e.stopPropagation();
+        el.scrollTop += e.deltaY;
+      };
+
+      return (
+        <div
+          id="contact"
+          onWheel={handleWheel}
+          style={{
+            display: 'flex',
+            height: '100vh',
+            backgroundColor: '#f4f3ee',
+            overflow: 'hidden',
+          }}
+        >
+          <div style={{
+            width: '40%',
+            padding: '3rem 2rem 3rem 3rem',
+            display: 'flex',
+            alignItems: 'flex-start',
+            justifyContent: 'flex-start',
+            flexShrink: 0,
+          }}>
+            <h1 style={{
+              fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+              color: '#0d244d',
+              fontWeight: 'normal',
+              lineHeight: 1.1,
+              position: 'sticky',
+              top: '3rem',
+            }}>
+              Let's<br />Connect
+            </h1>
+          </div>
+
+          <div
+            ref={rightRef}
+            id="contact-right"
+            style={{
+              width: '60%',
+              overflowY: 'scroll',
+              padding: '3rem 3rem 3rem 2rem',
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+            }}
+          >
+            <style>{`#contact-right::-webkit-scrollbar { display: none; }`}</style>
+
+            <p style={{ 
+              color: '#0d244d', 
+              lineHeight: 1.8, 
+              marginBottom: '2.5rem', 
+              fontSize: '0.95rem',
+              opacity: 0.8,
+            }}>
+              I'm always open to new opportunities, collaborations, and conversations. Feel free to reach out!
+            </p>
+
+            <div style={{ marginBottom: '3rem' }}>
+              <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '1.5rem',
+              }}>
+                <div>
+                  <p style={{
+                    fontSize: '0.7rem',
+                    fontWeight: 600,
+                    color: '#5a524c',
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    marginBottom: '0.5rem',
+                  }}>
+                    Email
+                  </p>
+                  <a 
+                    href="mailto:janitha.chathuni@example.com"
+                    style={{
+                      fontSize: '1rem',
+                      color: '#0d244d',
+                      textDecoration: 'none',
+                      transition: 'color 0.2s',
+                      fontWeight: 500,
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.color = '#4ade80'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = '#0d244d'}
+                  >
+                    janitha.chathuni@example.com
+                  </a>
+                </div>
+
+                <div>
+                  <p style={{
+                    fontSize: '0.7rem',
+                    fontWeight: 600,
+                    color: '#5a524c',
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    marginBottom: '0.5rem',
+                  }}>
+                    Location
+                  </p>
+                  <p style={{
+                    fontSize: '1rem',
+                    color: '#0d244d',
+                    margin: 0,
+                  }}>
+                    Colombo, Sri Lanka
+                  </p>
+                </div>
+
+                <div>
+                  <p style={{
+                    fontSize: '0.7rem',
+                    fontWeight: 600,
+                    color: '#5a524c',
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    marginBottom: '0.5rem',
+                  }}>
+                    Social
+                  </p>
+                  <div style={{
+                    display: 'flex',
+                    gap: '1.5rem',
+                  }}>
+                    <a 
+                      href="https://github.com/janithachathuni"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        fontSize: '1rem',
+                        color: '#0d244d',
+                        textDecoration: 'none',
+                        transition: 'color 0.2s',
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.color = '#4ade80'}
+                      onMouseLeave={(e) => e.currentTarget.style.color = '#0d244d'}
+                    >
+                      GitHub
+                    </a>
+                    <a 
+                      href="https://linkedin.com/in/janithachathuni"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        fontSize: '1rem',
+                        color: '#0d244d',
+                        textDecoration: 'none',
+                        transition: 'color 0.2s',
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.color = '#4ade80'}
+                      onMouseLeave={(e) => e.currentTarget.style.color = '#0d244d'}
+                    >
+                      LinkedIn
+                    </a>
+                    <a 
+                      href="https://twitter.com/janithachathuni"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        fontSize: '1rem',
+                        color: '#0d244d',
+                        textDecoration: 'none',
+                        transition: 'color 0.2s',
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.color = '#4ade80'}
+                      onMouseLeave={(e) => e.currentTarget.style.color = '#0d244d'}
+                    >
+                      Twitter
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style={{
+              background: 'rgba(13, 36, 77, 0.02)',
+              borderRadius: '12px',
+              padding: '2rem',
+              border: '1px solid rgba(13, 36, 77, 0.06)',
+            }}>
+              <h3 style={{
+                fontSize: '1.2rem',
+                color: '#0d244d',
+                margin: '0 0 0.25rem 0',
+                fontWeight: 600,
+              }}>
+                Send a Message
+              </h3>
+              <p style={{
+                fontSize: '0.85rem',
+                color: '#5a524c',
+                marginBottom: '1.5rem',
+              }}>
+                I'll get back to you as soon as possible.
+              </p>
+
+              <form>
+                <div style={{ marginBottom: '1rem' }}>
+                  <label style={{
+                    display: 'block',
+                    fontSize: '0.7rem',
+                    fontWeight: 600,
+                    color: '#5a524c',
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    marginBottom: '0.25rem',
+                  }}>
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Your name"
+                    style={{
+                      width: '100%',
+                      padding: '0.75rem',
+                      fontSize: '0.9rem',
+                      border: '1px solid rgba(13, 36, 77, 0.1)',
+                      borderRadius: '6px',
+                      background: '#ffffff',
+                      color: '#0d244d',
+                      transition: 'border-color 0.2s',
+                      outline: 'none',
+                    }}
+                    onFocus={(e) => e.currentTarget.style.borderColor = '#4ade80'}
+                    onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(13, 36, 77, 0.1)'}
+                  />
+                </div>
+
+                <div style={{ marginBottom: '1rem' }}>
+                  <label style={{
+                    display: 'block',
+                    fontSize: '0.7rem',
+                    fontWeight: 600,
+                    color: '#5a524c',
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    marginBottom: '0.25rem',
+                  }}>
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="your.email@example.com"
+                    style={{
+                      width: '100%',
+                      padding: '0.75rem',
+                      fontSize: '0.9rem',
+                      border: '1px solid rgba(13, 36, 77, 0.1)',
+                      borderRadius: '6px',
+                      background: '#ffffff',
+                      color: '#0d244d',
+                      transition: 'border-color 0.2s',
+                      outline: 'none',
+                    }}
+                    onFocus={(e) => e.currentTarget.style.borderColor = '#4ade80'}
+                    onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(13, 36, 77, 0.1)'}
+                  />
+                </div>
+
+                <div style={{ marginBottom: '1.5rem' }}>
+                  <label style={{
+                    display: 'block',
+                    fontSize: '0.7rem',
+                    fontWeight: 600,
+                    color: '#5a524c',
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    marginBottom: '0.25rem',
+                  }}>
+                    Message
+                  </label>
+                  <textarea
+                    rows="4"
+                    placeholder="Your message here..."
+                    style={{
+                      width: '100%',
+                      padding: '0.75rem',
+                      fontSize: '0.9rem',
+                      border: '1px solid rgba(13, 36, 77, 0.1)',
+                      borderRadius: '6px',
+                      background: '#ffffff',
+                      color: '#0d244d',
+                      transition: 'border-color 0.2s',
+                      outline: 'none',
+                      resize: 'vertical',
+                    }}
+                    onFocus={(e) => e.currentTarget.style.borderColor = '#4ade80'}
+                    onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(13, 36, 77, 0.1)'}
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem',
+                    fontSize: '0.9rem',
+                    fontWeight: 600,
+                    color: '#ffffff',
+                    background: '#0d244d',
+                    border: 'none',
+                    borderRadius: '6px',
+                    cursor: 'pointer',
+                    transition: 'background 0.2s, transform 0.1s',
+                    letterSpacing: '0.04em',
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.background = '#1a3570'}
+                  onMouseLeave={(e) => e.currentTarget.style.background = '#0d244d'}
+                  onMouseDown={(e) => e.currentTarget.style.transform = 'scale(0.98)'}
+                  onMouseUp={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+            <div style={{ height: '4rem' }} />
+          </div>
+        </div>
+      );
+    };
+
+    // ===== APP COMPONENT =====
+    const App = () => {
+      return (
+        <div>
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <div style={{ position: 'sticky', top: 0 }}>
+              <HeroSection />
+            </div>
+            <div style={{ height: '100vh' }} />
+          </div>
+
+          <div style={{ position: 'relative', zIndex: 2, marginTop: '-100vh' }}>
+            <div style={{ position: 'sticky', top: 0, overflow: 'auto', maxHeight: '100vh' }}>
+              <SkillsSection />
+            </div>
+            <div style={{ height: '100vh' }} />
+          </div>
+
+          <div style={{ position: 'relative', zIndex: 3, marginTop: '-100vh' }}>
+            <div style={{ position: 'sticky', top: 0 }}>
+              <ProjectsSection />
+            </div>
+            <div style={{ height: '100vh' }} />
+          </div>
+
+          <div style={{ position: 'relative', zIndex: 4, marginTop: '-100vh' }}>
+            <div style={{ position: 'sticky', top: 0 }}>
+              <ExperienceSection />
+            </div>
+            <div style={{ height: '100vh' }} />
+          </div>
+
+          <div style={{ position: 'relative', zIndex: 5, marginTop: '-100vh' }}>
+            <div style={{ position: 'sticky', top: 0 }}>
+              <EducationSection />
+            </div>
+            <div style={{ height: '100vh' }} />
+          </div>
+
+          <div style={{ position: 'relative', zIndex: 6, marginTop: '-100vh' }}>
+            <ContactSection />
+          </div>
+        </div>
+      );
+    };
+
+    // ===== RENDER APP =====
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    );
+  </script>
+</body>
+</html>
